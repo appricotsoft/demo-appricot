@@ -1,83 +1,61 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 export default function Hero() {
   const t = useTranslations("hero");
 
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-24">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Heading */}
-          <h1 className="text-4xl md:text-display-1 font-semibold mb-6 leading-tight">
-            {t("title")}
-          </h1>
+    <section className="py-20 md:py-32">
+      <div className="container mx-auto px-5 md:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="max-w-xl">
+            <h1 className="text-[48px] md:text-[72px] font-semibold leading-[1.11] text-foreground mb-6">
+              Start your digital<br />marketing career
+            </h1>
+            
+            <p className="text-body text-lg leading-relaxed mb-8 max-w-md">
+              Gain the work experience, mentorship, and support you need to start your career in digital marketing.
+            </p>
 
-          {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-8">
-            {t("subtitle")}
+            {/* Email Input + CTA */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 rounded-lg border border-border bg-transparent text-foreground placeholder:text-body focus:outline-none focus:border-foreground transition-colors"
+              />
+              <button className="px-8 py-4 bg-foreground text-white rounded-lg font-medium hover:bg-primary hover:text-foreground transition-colors">
+                Get Started
+              </button>
+            </div>
+
+            <p className="text-body text-sm">
+              No credit card required
+            </p>
+          </div>
+
+          {/* Right - 3D Illustration */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-lg aspect-square">
+              {/* Placeholder for 3D illustration */}
+              <svg viewBox="0 0 400 400" className="w-full h-full">
+                {/* Simple placeholder illustration */}
+                <circle cx="200" cy="180" r="60" fill="#272d31" />
+                <ellipse cx="200" cy="320" rx="80" ry="30" fill="#F5D547" />
+                <rect x="140" y="220" width="120" height="100" rx="10" fill="#e8e6e2" />
+                <rect x="155" y="240" width="90" height="60" rx="5" fill="#f8f7f4" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Trusted By */}
+        <div className="mt-16 pt-8 border-t border-border">
+          <p className="text-body text-sm">
+            Trusted by over 1500 companies across the world
           </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <a
-              href="#"
-              className="bg-primary hover:bg-primary-hover text-foreground px-8 py-3.5 rounded-full font-medium transition-colors"
-            >
-              {t("cta")}
-            </a>
-            <a
-              href="#video"
-              className="flex items-center gap-2 text-foreground hover:text-muted transition-colors group"
-            >
-              <span className="w-12 h-12 rounded-full border-2 border-foreground flex items-center justify-center group-hover:border-muted transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <polygon points="5,3 19,12 5,21" />
-                </svg>
-              </span>
-              {t("watchDemo")}
-            </a>
-          </div>
-
-          {/* No credit card note */}
-          <p className="text-sm text-muted mb-12">{t("noCreditCard")}</p>
-
-          {/* Hero Image */}
-          <div className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden bg-primary-light">
-            <Image
-              src="/hero-image.jpg"
-              alt="Digital marketing"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Play button overlay for video */}
-            <button className="absolute inset-0 flex items-center justify-center group">
-              <span className="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="ml-1"
-                >
-                  <polygon points="5,3 19,12 5,21" />
-                </svg>
-              </span>
-            </button>
-          </div>
-
-          {/* Trusted by text */}
-          <p className="text-sm text-muted mt-8">{t("trustedBy")}</p>
         </div>
       </div>
     </section>

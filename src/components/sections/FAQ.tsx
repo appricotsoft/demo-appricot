@@ -1,96 +1,104 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 
 const faqs = [
   {
-    question: "What services does Appricotsoft provide?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    question: "How does the free trial work?",
+    answer: "Our free trial gives you full access to all features for 7 days. No credit card required to start.",
   },
   {
-    question: "How do I get started with your platform?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    question: "Can I cancel my subscription anytime?",
+    answer: "Yes, you can cancel your subscription at any time. Your access will continue until the end of your billing period.",
   },
   {
-    question: "What is your pricing model?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    question: "What payment methods do you accept?",
+    answer: "We accept all major credit cards, PayPal, and bank transfers for enterprise plans.",
   },
   {
-    question: "Do you offer custom development?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    question: "Is there a setup fee?",
+    answer: "No, there are no setup fees. You only pay for your subscription plan.",
   },
   {
-    question: "What technologies do you use?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    question: "Do you offer refunds?",
+    answer: "Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.",
+  },
+  {
+    question: "Can I upgrade or downgrade my plan?",
+    answer: "Yes, you can change your plan at any time. Changes take effect immediately.",
+  },
+  {
+    question: "Is my data secure?",
+    answer: "Absolutely. We use industry-standard encryption and security practices to protect your data.",
+  },
+  {
+    question: "Do you offer custom enterprise solutions?",
+    answer: "Yes, we offer custom solutions for enterprise clients. Contact our sales team for more information.",
   },
 ];
 
 export default function FAQ() {
-  const t = useTranslations("faq");
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-16 md:py-24 bg-card">
-      <div className="container mx-auto max-w-3xl">
-        <h2 className="text-2xl md:text-heading-1 font-semibold text-center mb-4">
-          {t("heading")}
-        </h2>
-        <p className="text-muted text-center mb-12">{t("subtitle")}</p>
+    <section className="py-20 md:py-28 bg-white">
+      <div className="container mx-auto px-5 md:px-20">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground mb-6">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-body text-lg max-w-xl mx-auto">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+          </p>
+        </div>
 
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
+        {/* FAQ Grid - 2 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-background rounded-2xl border border-border overflow-hidden"
+              className="border border-border rounded-xl overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-surface/50 transition-colors"
               >
-                <span className="font-medium">{faq.question}</span>
-                <span
-                  className={`transition-transform ${
-                    openIndex === index ? "rotate-45" : ""
-                  }`}
-                >
+                <span className="font-medium text-foreground pr-4">{faq.question}</span>
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-surface flex items-center justify-center">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
+                    className={`w-4 h-4 text-foreground transition-transform ${
+                      openIndex === index ? "rotate-45" : ""
+                    }`}
                     fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth={2}
                   >
-                    <line x1="12" y1="5" x2="12" y2="19" />
-                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                   </svg>
                 </span>
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6 text-muted">{faq.answer}</div>
+                <div className="px-6 pb-6">
+                  <p className="text-body">{faq.answer}</p>
+                </div>
               )}
             </div>
           ))}
         </div>
 
         {/* Still have questions */}
-        <div className="text-center mt-12 p-8 bg-background rounded-3xl border border-border">
-          <h3 className="text-lg font-semibold mb-2">{t("stillQuestion")}</h3>
-          <p className="text-muted text-sm mb-4">{t("stillQuestionSubtitle")}</p>
-          <a
-            href="#contact"
-            className="inline-block bg-primary hover:bg-primary-hover text-foreground px-6 py-2.5 rounded-full font-medium transition-colors"
-          >
+        <div className="text-center mt-16 p-12 bg-primary/10 rounded-3xl max-w-2xl mx-auto">
+          <h3 className="text-xl font-semibold text-foreground mb-3">
+            Still have a question?
+          </h3>
+          <p className="text-body mb-6">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </p>
+          <button className="px-8 py-4 bg-foreground text-white rounded-lg font-medium hover:bg-primary hover:text-foreground transition-colors">
             Contact Us
-          </a>
+          </button>
         </div>
       </div>
     </section>

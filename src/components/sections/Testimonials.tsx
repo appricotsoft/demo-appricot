@@ -1,46 +1,68 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-
 const testimonials = [
   {
     name: "Matt Cannon",
     role: "Head of Marketing",
+    avatar: "MC",
   },
   {
     name: "Sophie Moore",
     role: "Web Designer",
+    avatar: "SM",
   },
   {
     name: "John Carter",
     role: "Lead Developer",
+    avatar: "JC",
   },
 ];
 
 export default function Testimonials() {
-  const t = useTranslations("testimonials");
-
   return (
-    <section className="py-16 md:py-24 bg-card">
-      <div className="container mx-auto">
-        <h2 className="text-2xl md:text-heading-1 font-semibold text-center mb-16">
-          {t("heading")}
+    <section className="py-20 md:py-28 bg-white">
+      <div className="container mx-auto px-5 md:px-20">
+        {/* Section Header */}
+        <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground mb-16">
+          What our clients say
         </h2>
 
-        {/* Testimonial Avatars - Horizontal scroll */}
-        <div className="flex justify-center gap-8 overflow-x-auto pb-4">
-          {[...testimonials, ...testimonials].map((person, index) => (
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="flex flex-col items-center gap-3 min-w-[120px]"
+              className="bg-background rounded-2xl p-8 border border-border/30"
             >
-              <div className="w-16 h-16 rounded-full bg-muted overflow-hidden">
-                {/* Placeholder avatar */}
-                <div className="w-full h-full bg-gradient-to-br from-primary to-primary-hover" />
+              {/* Avatar and Info */}
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-foreground font-semibold text-lg">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                  <p className="text-body text-sm">{testimonial.role}</p>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="font-medium text-sm">{person.name}</p>
-                <p className="text-xs text-muted">{person.role}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Duplicate row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={`dup-${index}`}
+              className="bg-background rounded-2xl p-8 border border-border/30"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-foreground font-semibold text-lg">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
+                  <p className="text-body text-sm">{testimonial.role}</p>
+                </div>
               </div>
             </div>
           ))}

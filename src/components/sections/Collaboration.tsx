@@ -1,45 +1,43 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+const features = [
+  "User-friendly experience, whether you're shopping online, making in-store purchases, or traveling abroad.",
+  "When our team provides design and digital marketing.",
+  "When our team provides design and digital marketing.",
+];
 
 export default function Collaboration() {
-  const t = useTranslations("collaboration");
-
-  const features = [
-    { key: "organizeData", icon: "✓" },
-    { key: "workWithTeam", icon: "✓" },
-    { key: "businessAnalytics", icon: "✓" },
-  ];
-
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image/Mockup */}
-          <div className="order-2 md:order-1">
-            <div className="aspect-[4/3] bg-card rounded-3xl border border-border flex items-center justify-center">
-              <div className="text-muted">Dashboard Preview</div>
+    <section className="py-20 md:py-28">
+      <div className="container mx-auto px-5 md:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Image placeholder */}
+          <div className="relative">
+            <div className="aspect-[4/3] bg-surface rounded-3xl flex items-center justify-center">
+              <svg className="w-32 h-32 text-border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </div>
           </div>
 
-          {/* Content */}
-          <div className="order-1 md:order-2">
-            <h2 className="text-2xl md:text-heading-1 font-semibold mb-6">
-              {t("heading")}
+          {/* Right - Content */}
+          <div>
+            <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground mb-8">
+              Collaborate with your<br />team anytime, anywhere.
             </h2>
-            <p className="text-muted mb-8">{t("subtitle")}</p>
 
-            {/* Feature list */}
-            <ul className="space-y-4">
+            <div className="space-y-6">
               {features.map((feature, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <span className="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-sm">
-                    {feature.icon}
-                  </span>
-                  <span>{t(feature.key)}</span>
-                </li>
+                <div key={index} className="flex gap-4">
+                  <div className="w-6 h-6 rounded-full bg-primary flex-shrink-0 flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p className="text-body text-lg">{feature}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
