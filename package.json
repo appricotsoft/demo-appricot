@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.77.0",
+    "@payloadcms/db-vercel-postgres": "^3.77.0",
     "@payloadcms/next": "^3.77.0",
     "@payloadcms/richtext-lexical": "^3.77.0",
     "framer-motion": "^12.34.3",

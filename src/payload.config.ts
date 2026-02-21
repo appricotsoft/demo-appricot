@@ -34,8 +34,10 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL || "",
+      max: 10,
     },
-    push: true, // Auto-push schema changes
+    push: true,
+    migrationDir: path.resolve(dirname, "migrations"),
   }),
 });
