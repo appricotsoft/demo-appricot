@@ -1,56 +1,48 @@
 'use client';
 
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+
 const integrations = [
-  { name: 'Asana', color: '#F06A6A' },
-  { name: 'Zendesk', color: '#03363D' },
-  { name: 'Zoom', color: '#2D8CFF' },
-  { name: 'Slack', color: '#4A154B' },
-  { name: 'Zapier', color: '#FF4A00' },
-  { name: 'Trello', color: '#0079BF' },
-  { name: 'Teams', color: '#6264A7' },
-  { name: 'Mailchimp', color: '#FFE01B' },
-  { name: 'Google Meet', color: '#00897B' },
+  { name: 'Slack', color: 'bg-purple-500' },
+  { name: 'Notion', color: 'bg-gray-900' },
+  { name: 'Figma', color: 'bg-pink-500' },
+  { name: 'Zoom', color: 'bg-blue-500' },
+  { name: 'Trello', color: 'bg-sky-500' },
+  { name: 'Asana', color: 'bg-red-500' },
+  { name: 'Linear', color: 'bg-indigo-500' },
+  { name: 'GitHub', color: 'bg-gray-800' },
 ];
 
 export default function Integrations() {
   return (
-    <section className="py-20 bg-white animate-slideUp">
-      <div className="container mx-auto px-6 text-center">
-        <span className="text-sm uppercase tracking-wider text-body">what we do?</span>
-        <h2 className="text-[42px] leading-[1.2] font-semibold text-foreground mt-4 mb-4">
-          Fully integrated with all the tools<br />
-          you&apos;re already familar with
+    <section className="py-20">
+      <div className="container mx-auto px-4 md:px-6 text-center">
+        <Badge variant="outline" className="mb-4">Integrations</Badge>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          Works with your favorite tools
         </h2>
-        <p className="text-body mb-12">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse<br />
-          varius enim in eros elementum tristique.
+        <p className="text-muted-foreground max-w-2xl mx-auto mb-12">
+          Seamlessly integrate with the tools you already use and love.
         </p>
 
-        {/* Integration Logos */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12">
+        {/* Integration logos */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {integrations.map((integration, index) => (
             <div
               key={index}
-              className="w-[140px] h-[100px] rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: `${integration.color}20` }}
+              className="flex items-center gap-3 px-6 py-3 bg-muted rounded-full hover:bg-muted/80 transition-colors"
             >
-              <span 
-                className="font-medium text-sm"
-                style={{ color: integration.color }}
-              >
-                {integration.name}
-              </span>
+              <div className={`h-6 w-6 rounded ${integration.color}`} />
+              <span className="font-medium">{integration.name}</span>
             </div>
           ))}
         </div>
 
-        {/* Learn More Button */}
-        <a href="#" className="inline-flex items-center gap-2 text-foreground font-medium hover:gap-3 transition-all">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-            <path d="M8.15685 4.96448L13.8137 10.6213L8.15685 16.2782" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          Learn More
-        </a>
+        <Button variant="outline" className="gap-2">
+          View all integrations <ArrowRight className="h-4 w-4" />
+        </Button>
       </div>
     </section>
   );

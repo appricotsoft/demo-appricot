@@ -1,95 +1,54 @@
 'use client';
 
 import Link from 'next/link';
+import { Separator } from '@/components/ui/separator';
 
 const footerLinks = {
-  pages: {
-    title: 'Pages',
-    links: [
-      { label: 'About Us', href: '#' },
-      { label: 'Services', href: '#' },
-      { label: 'Contact Us', href: '#' },
-      { label: 'Pricing', href: '#' },
-    ],
-  },
-  utility: {
-    title: 'Utility',
-    links: [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Use', href: '#' },
-      { label: 'Cookie Policy', href: '#' },
-      { label: 'FAQ', href: '#' },
-    ],
-  },
-  resources: {
-    title: 'Resources',
-    links: [
-      { label: 'Blog', href: '#' },
-      { label: 'Documentation', href: '#' },
-      { label: 'Support', href: '#' },
-      { label: 'Changelog', href: '#' },
-    ],
+  product: {
+    title: 'Product',
+    links: ['Features', 'Pricing', 'Integrations', 'Changelog'],
   },
   company: {
     title: 'Company',
-    links: [
-      { label: 'About', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Press', href: '#' },
-      { label: 'Partners', href: '#' },
-    ],
+    links: ['About', 'Blog', 'Careers', 'Press'],
+  },
+  resources: {
+    title: 'Resources',
+    links: ['Documentation', 'Help Center', 'Community', 'Contact'],
+  },
+  legal: {
+    title: 'Legal',
+    links: ['Privacy', 'Terms', 'Cookie Policy', 'Licenses'],
   },
 };
 
-const socialLinks = [
-  { name: 'Twitter', href: '#', icon: 'X' },
-  { name: 'LinkedIn', href: '#', icon: 'in' },
-  { name: 'Instagram', href: '#', icon: 'IG' },
-  { name: 'Facebook', href: '#', icon: 'f' },
-];
-
 export default function Footer() {
   return (
-    <footer className="bg-foreground text-white py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12">
-          {/* Logo & Description */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <svg width="107" height="24" viewBox="0 0 107 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <text x="0" y="20" fontFamily="system-ui" fontSize="24" fontWeight="600" fill="white">aoi</text>
-              </svg>
+    <footer className="bg-muted/30 border-t">
+      <div className="container mx-auto px-4 md:px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="text-xl font-bold">
+              Appricot
             </Link>
-            <p className="text-white/70 text-sm mb-6">
-              Customer service software that enables you to build better customer relationships.
+            <p className="text-sm text-muted-foreground mt-4">
+              Building the future of digital marketing, one feature at a time.
             </p>
-            {/* Social Links */}
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-sm font-medium transition-colors"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
           </div>
 
-          {/* Link Columns */}
+          {/* Links */}
           {Object.values(footerLinks).map((column) => (
             <div key={column.title}>
               <h3 className="font-semibold mb-4">{column.title}</h3>
               <ul className="space-y-3">
                 {column.links.map((link) => (
-                  <li key={link.label}>
+                  <li key={link}>
                     <Link
-                      href={link.href}
-                      className="text-white/70 hover:text-white transition-colors text-sm"
+                      href="#"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      {link.label}
+                      {link}
                     </Link>
                   </li>
                 ))}
@@ -98,17 +57,22 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} Aoi. All rights reserved.
+        <Separator className="my-8" />
+
+        {/* Bottom */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Appricot. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-white/50 hover:text-white text-sm transition-colors">
-              Privacy Policy
+            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+              Twitter
             </Link>
-            <Link href="#" className="text-white/50 hover:text-white text-sm transition-colors">
-              Terms of Service
+            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+              LinkedIn
+            </Link>
+            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+              GitHub
             </Link>
           </div>
         </div>

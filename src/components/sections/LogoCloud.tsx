@@ -1,48 +1,58 @@
 'use client';
 
+import { Card, CardContent } from '@/components/ui/card';
+import { Star } from 'lucide-react';
+
+const logos = [
+  'Vercel', 'Stripe', 'Notion', 'Linear', 'Figma', 'Framer'
+];
+
 export default function LogoCloud() {
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="bg-white rounded-3xl p-10 shadow-sm animate-slideUp">
-          <div className="flex flex-col lg:flex-row items-center gap-8">
-            {/* Left - Heading */}
-            <div className="lg:w-1/2">
-              <h2 className="text-[42px] leading-[1.2] font-semibold text-foreground">
-                More than 13,000 teams<br />
-                use Aoi Platfrom
-              </h2>
-              <p className="text-body mt-4">
-                Customer service software enables you to build better<br />
-                customer relationships.
-              </p>
+    <section className="py-16 border-y bg-muted/30">
+      <div className="container mx-auto px-4 md:px-6">
+        <p className="text-center text-sm text-muted-foreground mb-8">
+          Trusted by over 1,500 companies worldwide
+        </p>
+        
+        {/* Logos */}
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-12">
+          {logos.map((logo) => (
+            <div key={logo} className="text-xl font-semibold text-muted-foreground/60 hover:text-foreground transition-colors">
+              {logo}
             </div>
-            
-            {/* Right - Rating Cards */}
-            <div className="lg:w-1/2 flex flex-wrap justify-center lg:justify-end gap-6">
-              {/* Capterra */}
-              <div className="text-center">
-                <h3 className="text-[42px] font-semibold text-foreground">4.9</h3>
-                <div className="flex justify-center gap-1 my-2">
+          ))}
+        </div>
+        
+        {/* Rating Cards */}
+        <div className="flex flex-wrap justify-center gap-6">
+          <Card className="w-auto">
+            <CardContent className="flex items-center gap-4 p-4">
+              <div className="text-3xl font-bold">4.9</div>
+              <div>
+                <div className="flex text-yellow-500 mb-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary text-xl">★</span>
+                    <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <span className="text-sm text-body">Capterra</span>
+                <div className="text-sm text-muted-foreground">Capterra</div>
               </div>
-              
-              {/* Trustpilot */}
-              <div className="text-center">
-                <h3 className="text-[42px] font-semibold text-foreground">4.8</h3>
-                <div className="flex justify-center gap-1 my-2">
+            </CardContent>
+          </Card>
+          
+          <Card className="w-auto">
+            <CardContent className="flex items-center gap-4 p-4">
+              <div className="text-3xl font-bold">4.8</div>
+              <div>
+                <div className="flex text-yellow-500 mb-1">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary text-xl">★</span>
+                    <Star key={i} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <span className="text-sm text-body">Trustpilot</span>
+                <div className="text-sm text-muted-foreground">Trustpilot</div>
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

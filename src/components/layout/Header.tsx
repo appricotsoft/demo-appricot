@@ -2,37 +2,35 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Pages', href: '#' },
-  { label: 'Portfolio', href: '#' },
-  { label: 'Blog', href: '#' },
-  { label: 'Shop', href: '#' },
-  { label: 'Features', href: '#' },
+  { label: 'Features', href: '#features' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Blog', href: '#blog' },
+  { label: 'About', href: '#about' },
 ];
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm animate-slideUp">
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <svg width="107" height="24" viewBox="0 0 107 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="20" fontFamily="system-ui" fontSize="24" fontWeight="600" fill="#222">aoi</text>
-            </svg>
+          <Link href="/" className="text-xl font-bold">
+            Appricot
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.label}
               </Link>
@@ -41,66 +39,45 @@ export default function Header() {
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
-            {/* Cart Icon */}
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
-              </svg>
-            </button>
-
-            {/* CTA Button - Desktop */}
-            <Link
-              href="#"
-              className="hidden md:inline-flex btn-primary"
-            >
+            <Button variant="ghost" size="sm" className="hidden md:inline-flex">
+              Sign In
+            </Button>
+            <Button size="sm" className="hidden md:inline-flex">
               Get Started
-            </Link>
+            </Button>
 
             {/* Mobile Menu Button */}
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
-              {mobileMenuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 12H21" />
-                  <path d="M3 6H21" />
-                  <path d="M3 18H21" />
-                </svg>
-              )}
-            </button>
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t border-border">
-          <div className="container mx-auto px-6 py-4">
+        <div className="md:hidden bg-background border-b">
+          <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                  className="text-muted-foreground hover:text-foreground transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="#"
-                className="btn-primary text-center mt-4"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Get Started
-              </Link>
+              <div className="flex flex-col gap-2 pt-4 border-t">
+                <Button variant="outline" className="w-full">Sign In</Button>
+                <Button className="w-full">Get Started</Button>
+              </div>
             </nav>
           </div>
         </div>

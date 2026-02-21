@@ -1,73 +1,74 @@
 'use client';
 
-import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    id: 1,
     name: 'Matt Cannon',
     role: 'Head of Marketing',
-    quote: '" When applied to building block a website or similar work product, a Visual Guide can be an intermediate step toward the end goal of a complete website. By creating a visual guide along the way, the designer or developer can get input from the other people involved in the website such as the customer, their manager, and other members of the team. "',
+    company: 'TechCorp',
+    quote: 'This platform has transformed how we approach digital marketing. The insights we get are invaluable.',
+    initials: 'MC',
   },
   {
-    id: 2,
     name: 'Sophie Moore',
     role: 'Web Designer',
-    quote: '"Implementing Visual Guides in our website development has significantly enhanced our workflow. These guides act as a pivotal intermediary, fostering collaboration among our team, clients, and managers. The visual representation not only aids in efficient communication but also facilitates valuable input from all stakeholders."',
+    company: 'DesignStudio',
+    quote: 'Implementing this solution significantly enhanced our workflow and collaboration with clients.',
+    initials: 'SM',
   },
   {
-    id: 3,
     name: 'John Carter',
     role: 'Lead Developer',
-    quote: '"In our experience, leveraging Visual Guides during the creation of websites has proven to be a key strategy. These guides serve as an intermediary checkpoint, allowing our designers and developers to gather input from clients, managers, and team members."',
+    company: 'DevAgency',
+    quote: 'The best tool we have used for project management. It keeps everyone aligned and productive.',
+    initials: 'JC',
   },
 ];
 
 export default function Testimonials() {
-  const [activeTab, setActiveTab] = useState(1);
-  const activeTestimonial = testimonials.find(t => t.id === activeTab);
-
   return (
-    <section className="py-20 bg-background animate-slideUp">
-      <div className="container mx-auto px-6">
-        {/* Section Header */}
-        <h2 className="text-[42px] leading-[1.2] font-semibold text-foreground text-center mb-12">
-          What our clients say
-        </h2>
-
-        {/* Testimonial Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {testimonials.map((testimonial) => (
-            <button
-              key={testimonial.id}
-              onClick={() => setActiveTab(testimonial.id)}
-              className={`flex items-center gap-3 px-6 py-3 rounded-full transition-colors ${
-                activeTab === testimonial.id
-                  ? 'bg-foreground text-white'
-                  : 'bg-white text-foreground hover:bg-gray-100'
-              }`}
-            >
-              {/* Avatar placeholder */}
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium ${
-                activeTab === testimonial.id ? 'bg-white/20' : 'bg-gray-200'
-              }`}>
-                {testimonial.name.split(' ').map(n => n[0]).join('')}
-              </div>
-              <div className="text-left">
-                <div className="font-medium">{testimonial.name}</div>
-                <div className={`text-sm ${activeTab === testimonial.id ? 'text-white/70' : 'text-body'}`}>
-                  {testimonial.role}
-                </div>
-              </div>
-            </button>
-          ))}
+    <section className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <Badge variant="outline" className="mb-4">Testimonials</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            What our clients say
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Trusted by thousands of companies worldwide
+          </p>
         </div>
 
-        {/* Quote */}
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-xl text-body leading-relaxed">
-            {activeTestimonial?.quote}
-          </p>
+        {/* Testimonial Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="relative">
+              <CardContent className="pt-6">
+                <Quote className="h-8 w-8 text-primary/20 mb-4" />
+                <p className="text-muted-foreground mb-6">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-3">
+                  <Avatar>
+                    <AvatarFallback className="bg-primary text-primary-foreground">
+                      {testimonial.initials}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="font-semibold">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {testimonial.role} at {testimonial.company}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
