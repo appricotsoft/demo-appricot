@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ========================================================================
+   AOi Theme - Instrument Sans Font
+   ======================================================================== */
 @font-face {
   font-family: "Instrument Sans";
   src: url("/fonts/instrument-sans/400.woff2") format("woff2"),
@@ -36,22 +39,134 @@
   font-display: swap;
 }
 
+/* ========================================================================
+   AOi Theme - CSS Variables
+   ======================================================================== */
 :root {
-  --background: #F8F6F2;
-  --foreground: #1A1A1A;
+  /* Colors */
+  --background: #f8f7f4;
+  --foreground: #272d31;
+  --body-text: #4c4c4c;
   --primary: #F5D547;
   --primary-hover: #E5C537;
+  --primary-light: #f2e29e;
+  --border: #cfcfcf;
+  --surface: #f5f3ef;
+  --surface-dark: #f7f8f9;
+  --white: #ffffff;
+  
+  /* Typography */
+  --font-family: "Instrument Sans", sans-serif;
+  --line-height: 1.56;
+  
+  /* Spacing */
+  --container-padding: 20px;
+  --container-padding-md: 80px;
+  --container-max: 1300px;
+  
+  /* Border radius */
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* ========================================================================
+   AOi Theme - Base Styles
+   ======================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  -webkit-font-feature-settings: "lnum";
+  -moz-font-feature-settings: "lnum";
+  font-feature-settings: "lnum";
 }
 
 body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: var(--line-height);
+  color: var(--body-text);
   background-color: var(--background);
-  color: var(--foreground);
-  font-family: "Instrument Sans", system-ui, sans-serif;
+  overflow-x: hidden;
+  word-break: break-word;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* ========================================================================
+   AOi Theme - Typography
+   ======================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: var(--font-family);
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 72px;
+  line-height: 1.11;
+}
+
+h2 {
+  font-size: 64px;
+  line-height: 1.12;
+}
+
+h3 {
+  font-size: 56px;
+  line-height: 1.17;
+}
+
+h4 {
+  font-size: 48px;
+  line-height: 1.16;
+}
+
+h5 {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 28px;
+  line-height: 1.28;
+}
+
+@media (max-width: 1279px) {
+  h1 { font-size: 56px; }
+  h2 { font-size: 48px; }
+  h3 { font-size: 40px; }
+  h4 { font-size: 36px; }
+  h5 { font-size: 32px; }
+  h6 { font-size: 26px; }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 9px;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--foreground);
+  outline: 0;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--primary);
 }
 
 /* Selection */
@@ -60,7 +175,141 @@ html {
   color: var(--foreground);
 }
 
-/* Custom cursor styles (from AOi theme) */
+/* ========================================================================
+   AOi Theme - Buttons
+   ======================================================================== */
+button,
+.button,
+[type="submit"],
+[type="button"] {
+  display: inline-block;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--white);
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  background-color: var(--foreground);
+  border: 1px solid var(--foreground);
+  padding: 20px 40px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s;
+  appearance: none;
+}
+
+button:hover,
+.button:hover,
+[type="submit"]:hover,
+[type="button"]:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--foreground);
+}
+
+button:focus,
+.button:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Primary button variant */
+.button-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--foreground);
+}
+
+.button-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Outline button variant */
+.button-outline {
+  background-color: transparent;
+  border-color: var(--foreground);
+  color: var(--foreground);
+}
+
+.button-outline:hover {
+  background-color: var(--foreground);
+  color: var(--white);
+}
+
+/* ========================================================================
+   AOi Theme - Form Elements
+   ======================================================================== */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  padding: 16px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--foreground);
+  border-radius: var(--radius);
+  transition: all 0.3s;
+  appearance: none;
+  outline: 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--body-text);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--foreground);
+  outline: none;
+}
+
+/* ========================================================================
+   AOi Theme - Container
+   ======================================================================== */
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  width: 100%;
+  max-width: var(--container-max);
+}
+
+@media (min-width: 719px) {
+  .container {
+    padding-left: var(--container-padding-md);
+    padding-right: var(--container-padding-md);
+  }
+}
+
+/* ========================================================================
+   AOi Theme - Images
+   ======================================================================== */
+img {
+  border-style: none;
+  height: auto;
+  max-width: 100%;
+}
+
+/* ========================================================================
+   AOi Theme - Custom Cursor (optional)
+   ======================================================================== */
 .n-cursor {
   pointer-events: none;
   position: fixed;
@@ -96,3 +345,44 @@ html {
   height: 50px;
   border-color: var(--primary);
 }
+
+/* ========================================================================
+   AOi Theme - Utility Classes
+   ======================================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Section spacing */
+.section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 1279px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Text colors */
+.text-body { color: var(--body-text); }
+.text-heading { color: var(--foreground); }
+.text-primary { color: var(--primary); }
+
+/* Background colors */
+.bg-surface { background-color: var(--surface); }
+.bg-primary { background-color: var(--primary); }
+.bg-primary-light { background-color: var(--primary-light); }
+
+/* Border */
+.border-default { border-color: var(--border); }

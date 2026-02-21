@@ -9,66 +9,76 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // AOi Theme Colors
-        background: "#F8F6F2",
-        foreground: "#1A1A1A",
+        // AOi Theme Colors (extracted from theme CSS)
+        background: "#f8f7f4",
+        foreground: "#272d31",
+        body: "#4c4c4c",
         primary: {
-          DEFAULT: "#F5D547", // Yellow accent
+          DEFAULT: "#F5D547",
           hover: "#E5C537",
-          light: "#FFF9E5",
+          light: "#f2e29e", // Mobile menu bg
         },
         secondary: {
-          DEFAULT: "#1A1A1A",
-          light: "#4A4A4A",
+          DEFAULT: "#272d31",
+          light: "#4c4c4c",
         },
         muted: {
-          DEFAULT: "#6B6B6B",
-          foreground: "#9A9A9A",
+          DEFAULT: "#4c4c4c",
+          foreground: "#6b6b6b",
         },
-        border: "#E5E5E5",
+        border: "#cfcfcf",
         card: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#1A1A1A",
+          DEFAULT: "#ffffff",
+          foreground: "#272d31",
+        },
+        surface: {
+          DEFAULT: "#f5f3ef",
+          dark: "#f7f8f9",
         },
       },
       fontFamily: {
         sans: ["Instrument Sans", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-1": ["4.5rem", { lineHeight: "1.1", fontWeight: "600" }],
-        "display-2": ["3.5rem", { lineHeight: "1.15", fontWeight: "600" }],
-        "heading-1": ["2.5rem", { lineHeight: "1.2", fontWeight: "600" }],
-        "heading-2": ["2rem", { lineHeight: "1.25", fontWeight: "600" }],
-        "heading-3": ["1.5rem", { lineHeight: "1.3", fontWeight: "600" }],
-        "body-lg": ["1.125rem", { lineHeight: "1.6" }],
-        "body": ["1rem", { lineHeight: "1.6" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
+        // AOi typography scale (from theme CSS)
+        "display-1": ["72px", { lineHeight: "1.11", fontWeight: "600" }],
+        "display-2": ["64px", { lineHeight: "1.12", fontWeight: "600" }],
+        "display-3": ["56px", { lineHeight: "1.17", fontWeight: "600" }],
+        "display-4": ["48px", { lineHeight: "1.16", fontWeight: "600" }],
+        "heading-1": ["40px", { lineHeight: "1.2", fontWeight: "500" }],
+        "heading-2": ["28px", { lineHeight: "1.28", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "1.56" }],
+        "body": ["16px", { lineHeight: "1.56" }],
+        "body-sm": ["14px", { lineHeight: "1.5" }],
+        "caption": ["13px", { lineHeight: "1.38", fontWeight: "500" }],
       },
       borderRadius: {
-        "2xl": "1rem",
-        "3xl": "1.5rem",
-        "4xl": "2rem",
+        DEFAULT: "8px",
+        lg: "12px",
+        xl: "16px",
+        "2xl": "20px",
+        "3xl": "24px",
       },
       spacing: {
         "18": "4.5rem",
         "22": "5.5rem",
         "30": "7.5rem",
       },
+      maxWidth: {
+        container: "1300px", // AOi container max-width
+      },
       container: {
         center: true,
         padding: {
-          DEFAULT: "1rem",
-          sm: "2rem",
-          lg: "4rem",
-          xl: "5rem",
-          "2xl": "6rem",
+          DEFAULT: "20px",
+          md: "80px",
         },
         screens: {
           sm: "640px",
           md: "768px",
           lg: "1024px",
           xl: "1280px",
-          "2xl": "1400px",
+          "2xl": "1300px",
         },
       },
       animation: {
