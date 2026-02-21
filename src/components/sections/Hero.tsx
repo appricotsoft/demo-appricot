@@ -1,10 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-
 export default function Hero() {
-  const t = useTranslations("hero");
-
   return (
     <section className="py-20 md:py-32">
       <div className="container mx-auto px-5 md:px-20">
