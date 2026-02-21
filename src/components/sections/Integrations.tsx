@@ -1,55 +1,56 @@
-"use client";
+'use client';
 
 const integrations = [
-  { name: "Slack", color: "#4A154B" },
-  { name: "Notion", color: "#000000" },
-  { name: "Trello", color: "#0079BF" },
-  { name: "Asana", color: "#F06A6A" },
-  { name: "Monday", color: "#FF3D57" },
-  { name: "Jira", color: "#0052CC" },
+  { name: 'Asana', color: '#F06A6A' },
+  { name: 'Zendesk', color: '#03363D' },
+  { name: 'Zoom', color: '#2D8CFF' },
+  { name: 'Slack', color: '#4A154B' },
+  { name: 'Zapier', color: '#FF4A00' },
+  { name: 'Trello', color: '#0079BF' },
+  { name: 'Teams', color: '#6264A7' },
+  { name: 'Mailchimp', color: '#FFE01B' },
+  { name: 'Google Meet', color: '#00897B' },
 ];
 
 export default function Integrations() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-5 md:px-20">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-body text-sm uppercase tracking-[2px] font-medium mb-4">
-            what we do?
-          </p>
-          <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground mb-6">
-            We want to bring business<br />& the digital world together.
-          </h2>
-        </div>
+    <section className="py-20 bg-white animate-slideUp">
+      <div className="container mx-auto px-6 text-center">
+        <span className="text-sm uppercase tracking-wider text-body">what we do?</span>
+        <h2 className="text-[42px] leading-[1.2] font-semibold text-foreground mt-4 mb-4">
+          Fully integrated with all the tools<br />
+          you&apos;re already familar with
+        </h2>
+        <p className="text-body mb-12">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse<br />
+          varius enim in eros elementum tristique.
+        </p>
 
-        {/* Second Section */}
-        <div className="mt-24">
-          <div className="text-center mb-16">
-            <p className="text-body text-sm uppercase tracking-[2px] font-medium mb-4">
-              what we do?
-            </p>
-            <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground mb-6">
-              Fully integrated with all the tools<br />you&apos;re already familiar with
-            </h2>
-            <p className="text-body text-lg max-w-xl mx-auto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
-            </p>
-          </div>
-
-          {/* Integration logos grid */}
-          <div className="flex flex-wrap justify-center gap-6">
-            {integrations.map((integration, index) => (
-              <div
-                key={index}
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-white font-bold text-xl"
-                style={{ backgroundColor: integration.color }}
+        {/* Integration Logos */}
+        <div className="flex flex-wrap justify-center gap-6 mb-12">
+          {integrations.map((integration, index) => (
+            <div
+              key={index}
+              className="w-[140px] h-[100px] rounded-xl flex items-center justify-center"
+              style={{ backgroundColor: `${integration.color}20` }}
+            >
+              <span 
+                className="font-medium text-sm"
+                style={{ color: integration.color }}
               >
-                {integration.name[0]}
-              </div>
-            ))}
-          </div>
+                {integration.name}
+              </span>
+            </div>
+          ))}
         </div>
+
+        {/* Learn More Button */}
+        <a href="#" className="inline-flex items-center gap-2 text-foreground font-medium hover:gap-3 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+            <path d="M8.15685 4.96448L13.8137 10.6213L8.15685 16.2782" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          Learn More
+        </a>
       </div>
     </section>
   );

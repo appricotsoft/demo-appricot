@@ -1,86 +1,118 @@
-"use client";
+'use client';
 
-const features = [
-  {
-    title: "Powerful dashboard",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Always in Sync",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
-  },
-  {
-    title: "Embedded analytics",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
-  },
-  {
-    title: "AI data predictions",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-  },
+import { useState } from 'react';
+
+const tabs = [
+  { id: 1, title: 'Powerful dashboard' },
+  { id: 2, title: 'Always in Sync' },
+  { id: 3, title: 'Embedded analytics' },
+  { id: 4, title: 'Ai data predictions' },
 ];
 
+const tabContent = {
+  1: {
+    tagline: 'Tagline',
+    heading: 'Collaborate with your\nteam anytime, anywhere.',
+    description: 'See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.',
+    features: ['Organize your data', 'Work with any team', 'Business analytics'],
+  },
+  2: {
+    tagline: 'Tagline',
+    heading: 'Collaborate with your\nteam anytime, anywhere.',
+    description: 'See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.',
+    features: ['Organize your data', 'Work with any team', 'Business analytics'],
+  },
+  3: {
+    tagline: 'Tagline',
+    heading: 'We want to bring business\n& the digital world together.',
+    description: 'See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.',
+    features: ['Organize your data', 'Work with any team', 'Business analytics'],
+  },
+  4: {
+    tagline: 'Tagline',
+    heading: 'We want to bring business\n& the digital world together.',
+    description: 'See which work apps your team is working in, and join them with a click. Shared cursors equals better than screen-sharing.',
+    features: ['Organize your data', 'Work with any team', 'Business analytics'],
+  },
+};
+
 export default function Features() {
+  const [activeTab, setActiveTab] = useState(1);
+  const content = tabContent[activeTab as keyof typeof tabContent];
+
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-5 md:px-20">
+    <section className="py-20 bg-background animate-slideUp">
+      <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-body text-sm uppercase tracking-[2px] font-medium mb-4">
-            our features
-          </p>
-          <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground">
-            See what our amazing features<br />can do for you.
+        <div className="text-center mb-12">
+          <span className="text-sm uppercase tracking-wider text-body">our features</span>
+          <h2 className="text-[42px] leading-[1.2] font-semibold text-foreground mt-4">
+            See what our amazing features<br />
+            can do for you.
           </h2>
         </div>
 
-        {/* Features Grid - Horizontal Scroll on Mobile */}
-        <div className="flex gap-6 overflow-x-auto pb-4 -mx-5 px-5 md:mx-0 md:px-0 md:grid md:grid-cols-4 md:overflow-visible">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-[280px] md:w-auto bg-background rounded-2xl p-8 border border-border/30"
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-6 py-3 rounded-full text-base font-medium transition-colors ${
+                activeTab === tab.id
+                  ? 'bg-foreground text-white'
+                  : 'bg-white text-foreground hover:bg-gray-100'
+              }`}
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-foreground mb-6">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-foreground">
-                {feature.title}
-              </h3>
-            </div>
+              {tab.title}
+            </button>
           ))}
         </div>
 
-        {/* Duplicate row for marquee effect - desktop only */}
-        <div className="hidden md:flex gap-6 mt-6 md:grid md:grid-cols-4">
-          {features.map((feature, index) => (
-            <div
-              key={`dup-${index}`}
-              className="bg-background rounded-2xl p-8 border border-border/30"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-foreground mb-6">
-                {feature.icon}
+        {/* Tab Content */}
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Left - Text */}
+          <div className="lg:w-1/2">
+            <span className="text-sm uppercase tracking-wider text-body">{content.tagline}</span>
+            <h3 className="text-[36px] leading-[1.2] font-semibold text-foreground mt-4 whitespace-pre-line">
+              {content.heading}
+            </h3>
+            <p className="text-body mt-6">
+              {content.description}
+            </p>
+            
+            <div className="w-full h-px bg-border my-8" />
+            
+            <ul className="space-y-4">
+              {content.features.map((feature, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M22 11.08V12C21.9988 14.1564 21.3005 16.2547 20.0093 17.9818C18.7182 19.709 16.9033 20.9725 14.8354 21.5839C12.7674 22.1953 10.5573 22.1219 8.53447 21.3746C6.51168 20.6273 4.78465 19.2461 3.61096 17.4371C2.43727 15.628 1.87979 13.4881 2.02168 11.3363C2.16356 9.18455 2.99721 7.13631 4.39828 5.49706C5.79935 3.85781 7.69279 2.71537 9.79619 2.24013C11.8996 1.7649 14.1003 1.98232 16.07 2.85999" stroke="#25282B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 4L12 14.01L9 11.01" stroke="#25282B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span className="text-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right - Image Placeholder */}
+          <div className="lg:w-1/2">
+            <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl aspect-[4/3] flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-32 h-32 bg-primary/30 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <rect x="8" y="12" width="48" height="36" rx="4" stroke="#222" strokeWidth="2"/>
+                    <path d="M8 20h48" stroke="#222" strokeWidth="2"/>
+                    <circle cx="14" cy="16" r="2" fill="#222"/>
+                    <circle cx="20" cy="16" r="2" fill="#222"/>
+                    <circle cx="26" cy="16" r="2" fill="#222"/>
+                  </svg>
+                </div>
+                <p className="text-sm text-body">Dashboard Preview</p>
               </div>
-              <h3 className="text-xl font-semibold text-foreground">
-                {feature.title}
-              </h3>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,104 +1,115 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-const faqs = [
-  {
-    question: "How does the free trial work?",
-    answer: "Our free trial gives you full access to all features for 7 days. No credit card required to start.",
-  },
-  {
-    question: "Can I cancel my subscription anytime?",
-    answer: "Yes, you can cancel your subscription at any time. Your access will continue until the end of your billing period.",
-  },
-  {
-    question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards, PayPal, and bank transfers for enterprise plans.",
-  },
-  {
-    question: "Is there a setup fee?",
-    answer: "No, there are no setup fees. You only pay for your subscription plan.",
-  },
-  {
-    question: "Do you offer refunds?",
-    answer: "Yes, we offer a 30-day money-back guarantee if you're not satisfied with our service.",
-  },
-  {
-    question: "Can I upgrade or downgrade my plan?",
-    answer: "Yes, you can change your plan at any time. Changes take effect immediately.",
-  },
-  {
-    question: "Is my data secure?",
-    answer: "Absolutely. We use industry-standard encryption and security practices to protect your data.",
-  },
-  {
-    question: "Do you offer custom enterprise solutions?",
-    answer: "Yes, we offer custom solutions for enterprise clients. Contact our sales team for more information.",
-  },
+const faqsLeft = [
+  { id: 1, question: 'What is Aoi and how does it work?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+  { id: 2, question: 'How do I get started with Aoi?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+  { id: 3, question: 'Is there a free trial available?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+  { id: 4, question: 'What are the system requirements for using Aoi?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
 ];
 
+const faqsRight = [
+  { id: 5, question: 'How is my data secured?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+  { id: 6, question: 'Can I cancel my subscription at any time?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+  { id: 7, question: 'What kind of support is available?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+  { id: 8, question: 'Are updates included in the subscription?', answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.' },
+];
+
+function FAQItem({ item, isOpen, onToggle }: { item: { id: number; question: string; answer: string }; isOpen: boolean; onToggle: () => void }) {
+  return (
+    <div className="border-b border-border">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between py-5 text-left"
+      >
+        <span className="font-medium text-foreground pr-4">{item.question}</span>
+        <span className="flex-shrink-0">
+          {isOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M8 12H16" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M12 8V16" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M8 12H16" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
+        </span>
+      </button>
+      {isOpen && (
+        <div className="pb-5 text-body">
+          {item.answer}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openItems, setOpenItems] = useState<number[]>([]);
+
+  const toggleItem = (id: number) => {
+    setOpenItems(prev => 
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
 
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-5 md:px-20">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-[36px] md:text-[48px] font-semibold leading-[1.16] text-foreground mb-6">
+    <section className="py-20 bg-background animate-slideUp">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-[42px] leading-[1.2] font-semibold text-foreground mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-body text-lg max-w-xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+          <p className="text-body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse<br />
+            varius enim in eros elementum tristique.
           </p>
         </div>
 
-        {/* FAQ Grid - 2 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-border rounded-xl overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-surface/50 transition-colors"
-              >
-                <span className="font-medium text-foreground pr-4">{faq.question}</span>
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-surface flex items-center justify-center">
-                  <svg
-                    className={`w-4 h-4 text-foreground transition-transform ${
-                      openIndex === index ? "rotate-45" : ""
-                    }`}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                  </svg>
-                </span>
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-body">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
+        {/* Two Column FAQs */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div>
+            {faqsLeft.map((faq) => (
+              <FAQItem
+                key={faq.id}
+                item={faq}
+                isOpen={openItems.includes(faq.id)}
+                onToggle={() => toggleItem(faq.id)}
+              />
+            ))}
+          </div>
+          <div>
+            {faqsRight.map((faq) => (
+              <FAQItem
+                key={faq.id}
+                item={faq}
+                isOpen={openItems.includes(faq.id)}
+                onToggle={() => toggleItem(faq.id)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Still have questions */}
-        <div className="text-center mt-16 p-12 bg-primary/10 rounded-3xl max-w-2xl mx-auto">
-          <h3 className="text-xl font-semibold text-foreground mb-3">
+        <div className="text-center">
+          <h3 className="text-xl font-semibold text-foreground mb-2">
             Still have a question?
           </h3>
           <p className="text-body mb-6">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <button className="px-8 py-4 bg-foreground text-white rounded-lg font-medium hover:bg-primary hover:text-foreground transition-colors">
+          <a href="#" className="btn-primary inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
             Contact Us
-          </button>
+          </a>
         </div>
       </div>
     </section>
