@@ -1,0 +1,73 @@
+{
+  "navigation": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "services": "Usługi",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "getStarted": "Rozpocznij"
+  },
+  "hero": {
+    "title": "Rozpocznij swoją karierę w marketingu cyfrowym",
+    "subtitle": "Zdobądź doświadczenie zawodowe, mentoring i wsparcie potrzebne do rozpoczęcia kariery w marketingu cyfrowym.",
+    "cta": "Rozpocznij",
+    "watchDemo": "Obejrzyj demo",
+    "noCreditCard": "Karta kredytowa nie jest wymagana",
+    "trustedBy": "Zaufało nam ponad 1500 firm na całym świecie"
+  },
+  "features": {
+    "sectionTitle": "nasze funkcje",
+    "heading": "Zobacz, co nasze niesamowite funkcje mogą dla Ciebie zrobić.",
+    "powerfulDashboard": "Potężny panel",
+    "alwaysInSync": "Zawsze zsynchronizowany",
+    "embeddedAnalytics": "Wbudowana analityka",
+    "aiPredictions": "Prognozy AI"
+  },
+  "stats": {
+    "projects": "Pomyślnie ukończone projekty",
+    "team": "Projektanci i deweloperzy"
+  },
+  "testimonials": {
+    "heading": "Co mówią nasi klienci"
+  },
+  "collaboration": {
+    "heading": "Współpracuj ze swoim zespołem w dowolnym czasie i miejscu.",
+    "subtitle": "Przyjazne dla użytkownika doświadczenie, niezależnie od tego, czy robisz zakupy online, w sklepie czy podróżujesz za granicę.",
+    "organizeData": "Organizuj swoje dane",
+    "workWithTeam": "Pracuj z dowolnym zespołem",
+    "businessAnalytics": "Analityka biznesowa"
+  },
+  "whatWeDo": {
+    "sectionTitle": "co robimy?",
+    "heading": "Chcemy połączyć biznes ze światem cyfrowym."
+  },
+  "integrations": {
+    "sectionTitle": "co robimy?",
+    "heading": "W pełni zintegrowane ze wszystkimi narzędziami, które już znasz",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
+  },
+  "pricing": {
+    "sectionTitle": "ponad 100 000+ Klientów",
+    "heading": "Wybierz plan odpowiedni dla Twojego biznesu",
+    "subtitle": "Coś poszło nie tak? Masz pytania? Rozumiemy. Dlatego mamy ludzi.",
+    "qualityControl": "Gwarantowana kontrola jakości",
+    "topQuality": "Najwyższa jakość usług",
+    "bestExperts": "Najlepsi eksperci do Twojej dyspozycji",
+    "advanced": "Zaawansowany",
+    "enterprise": "Enterprise",
+    "freeTrial": "7 dni za darmo"
+  },
+  "blog": {
+    "heading": "Aktualności"
+  },
+  "faq": {
+    "heading": "Często zadawane pytania",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    "stillQuestion": "Nadal masz pytanie?",
+    "stillQuestionSubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "footer": {
+    "copyright": "© 2024 Appricotsoft. Wszelkie prawa zastrzeżone."
+  }
+}

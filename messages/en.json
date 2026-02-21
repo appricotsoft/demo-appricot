@@ -1,0 +1,73 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "Start your digital marketing career",
+    "subtitle": "Gain the work experience, mentorship, and support you need to start your career in digital marketing.",
+    "cta": "Get Started",
+    "watchDemo": "Watch a demo",
+    "noCreditCard": "No credit card required",
+    "trustedBy": "Trusted by over 1500 companies across the world"
+  },
+  "features": {
+    "sectionTitle": "our features",
+    "heading": "See what our amazing features can do for you.",
+    "powerfulDashboard": "Powerful dashboard",
+    "alwaysInSync": "Always in Sync",
+    "embeddedAnalytics": "Embedded analytics",
+    "aiPredictions": "Ai data predictions"
+  },
+  "stats": {
+    "projects": "Successfully completed projects",
+    "team": "Designers and developers"
+  },
+  "testimonials": {
+    "heading": "What our clients say"
+  },
+  "collaboration": {
+    "heading": "Collaborate with your team anytime, anywhere.",
+    "subtitle": "User-friendly experience, whether you're shopping online, making in-store purchases, or traveling abroad.",
+    "organizeData": "Organize your data",
+    "workWithTeam": "Work with any team",
+    "businessAnalytics": "Business analytics"
+  },
+  "whatWeDo": {
+    "sectionTitle": "what we do?",
+    "heading": "We want to bring business & the digital world together."
+  },
+  "integrations": {
+    "sectionTitle": "what we do?",
+    "heading": "Fully integrated with all the tools you're already familiar with",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
+  },
+  "pricing": {
+    "sectionTitle": "over 100,00+ Clients",
+    "heading": "Choose plan that suits your business",
+    "subtitle": "Things go wrong have questions. We've understood. So we have people.",
+    "qualityControl": "Guaranteed quality control",
+    "topQuality": "Top quality service",
+    "bestExperts": "Best experts at your lease",
+    "advanced": "Advanced",
+    "enterprise": "Enterprise",
+    "freeTrial": "7 days free"
+  },
+  "blog": {
+    "heading": "News & Updates"
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+    "stillQuestion": "Still have a question?",
+    "stillQuestionSubtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "footer": {
+    "copyright": "© 2024 Appricotsoft. All rights reserved."
+  }
+}
