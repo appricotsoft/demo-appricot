@@ -1,23 +1,19 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 
 const testimonials = [
   {
     name: "Matt Cannon",
     role: "Head of Marketing",
-    avatar: "/avatars/matt.jpg",
   },
   {
     name: "Sophie Moore",
     role: "Web Designer",
-    avatar: "/avatars/sophie.jpg",
   },
   {
     name: "John Carter",
     role: "Lead Developer",
-    avatar: "/avatars/john.jpg",
   },
 ];
 
