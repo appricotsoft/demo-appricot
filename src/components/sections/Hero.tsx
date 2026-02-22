@@ -26,16 +26,13 @@ export default function Hero() {
           
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-            Gain the work experience, mentorship, and support you need to start your career in digital marketing.
+            For startups, SMBs, and enterprises that can't afford technical mistakes
           </p>
           
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
-            <Button size="lg" className="gap-2">
-              Get Started <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline" className="gap-2">
-              <Play className="h-4 w-4" /> Watch Demo
+            <Button size="lg">
+              Get your product validated
             </Button>
           </div>
           
