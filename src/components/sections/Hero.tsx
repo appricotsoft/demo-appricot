@@ -19,9 +19,9 @@ export default function Hero() {
           
           {/* Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            Start your digital
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"> marketing </span>
-            career
+            We Build Products That
+            <br />
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Win Funding And Scale</span>
           </h1>
           
           {/* Subtitle */}
